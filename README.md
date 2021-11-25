@@ -7,7 +7,7 @@ Simple service locator infrastructure.
 
 ## Basic Example
 
-```
+```swift
 /// Services available in the app scope.
 protocol AppServices {
   var myAppScopedService: MyAppScopedServiceProtocol { get }
@@ -28,7 +28,7 @@ class ProdAppServices: ServiceLocator, AppServices {
 
 ## Scopes
 
-```
+```swift
 /// Services available in the user scope.
 protocol UserServices {
 }

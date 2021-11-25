@@ -31,10 +31,11 @@ class ProdAppServices: ServiceLocator, AppServices {
 ```swift
 /// Services available in the user scope.
 protocol UserServices {
+  var myUserScopedService: MyUserScopedServiceProtocol { get }
 }
 
 /// Production implementation of `UserServices`.
-class ProdUserServices<ProdUserServices>: ServiceLocator, UserServices {
+class ProdUserServices: ChildServiceLocator<ProdAppServices>, UserServices {
   var myUserScopedService: MyUserScopedServiceProtocol {
     singleton {
       UserScopedServiceImplementation(parentService: parent.myAppScopedService)

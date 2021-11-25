@@ -72,7 +72,7 @@ open class ServiceLocator {
 ///       var myAppScopedService: MyAppScopedServiceProtocol { … }
 ///     }
 ///
-///     class ProdUserServices<ProdUserServices>: ServiceLocator, UserServices {
+///     class ProdUserServices: ChildServiceLocator<ProdAppServices>, UserServices {
 ///       var myUserScopedService: MyUserScopedServiceProtocol {
 ///         singleton {
 ///           UserScopedServiceImplementation(parentService: parent.myAppScopedService)

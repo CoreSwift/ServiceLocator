@@ -2,6 +2,32 @@ import XCTest
 import Dispatch
 @testable import ServiceLocator
 
+private actor TestState {
+  var isReady: Bool
+  var taskOneValue: TestItem?
+  var taskTwoValue: TestItem?
+
+  init() {
+    self.isReady = false
+    self.taskOneValue = nil
+    self.taskTwoValue = nil
+  }
+
+  func markReady() {
+    self.isReady = true
+  }
+
+  func setTaskOneValue(_ item: TestItem) {
+    XCTAssertTrue(isReady, "Attempting to set task one value while not ready")
+    taskOneValue = item
+  }
+
+  func setTaskTwoValue(_ item: TestItem) {
+    XCTAssertTrue(isReady, "Attempting to set task two value while not ready")
+    taskTwoValue = item
+  }
+}
+
 final class SingletonMapTests: XCTestCase {
   func testItExecutesFactory() async throws {
     let map = SingletonMap<String>()
@@ -17,32 +43,6 @@ final class SingletonMapTests: XCTestCase {
   }
 
   func testItBlocksOtherThreads() async throws {
-    actor TestState {
-      var isReady: Bool
-      var taskOneValue: TestItem?
-      var taskTwoValue: TestItem?
-
-      init() {
-        self.isReady = false
-        self.taskOneValue = nil
-        self.taskTwoValue = nil
-      }
-
-      func markReady() {
-        self.isReady = true
-      }
-
-      func setTaskOneValue(_ item: TestItem) {
-        XCTAssertTrue(isReady, "Attempting to set task one value while not ready")
-        taskOneValue = item
-      }
-
-      func setTaskTwoValue(_ item: TestItem) {
-        XCTAssertTrue(isReady, "Attempting to set task two value while not ready")
-        taskTwoValue = item
-      }
-    }
-
     let map = SingletonMap<String>()
 
     let factoryWaiter = NSConditionLock(condition: 0)

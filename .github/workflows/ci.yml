@@ -17,12 +17,26 @@ on:
       - "Package.swift"
 
 jobs:
-  build:
+  xcode:
     name: Swift ${{ matrix.swift }} on ${{ matrix.os }}
     strategy:
       matrix:
         os:
-          # - "ubuntu-latest"
+          - "macos-latest"
+        destination:
+          - 'platform=iOS Simulator,OS=15.0,name=iPhone 13'
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build and Test
+        run: |
+          xcodebuild test -scheme ServiceLocator -destination "${destination}" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO
+  spm:
+    name: Swift ${{ matrix.swift }} on ${{ matrix.os }}
+    strategy:
+      matrix:
+        os:
+          - "ubuntu-latest"
           - "macos-latest"
         swift:
           - "5.5"

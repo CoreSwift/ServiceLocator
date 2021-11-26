@@ -26,7 +26,7 @@ private class ChildLocator: ChildServiceLocator<RootLocator> {
 }
 
 final class ServiceLocatorTests: XCTestCase {
-  func testSingletonReturnsSameValue() async throws {
+  func testSingletonReturnsSameValue() throws {
     let locator = RootLocator()
 
     let itemOne = locator.itemOne
@@ -35,7 +35,7 @@ final class ServiceLocatorTests: XCTestCase {
     XCTAssertIdentical(itemOne, itemTwo)
   }
 
-  func testSingletonCompositeItem() async throws {
+  func testSingletonCompositeItem() throws {
     let locator = RootLocator()
 
     let singletonItem = locator.itemOne
@@ -44,7 +44,7 @@ final class ServiceLocatorTests: XCTestCase {
     XCTAssertIdentical(compositeItem.parentItems[0], singletonItem)
   }
 
-  func testChildAccessesParent() async throws {
+  func testChildAccessesParent() throws {
     let root = RootLocator()
     let child = ChildLocator(parent: root)
 

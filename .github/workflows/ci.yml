@@ -5,24 +5,27 @@ on:
     branches: 
       - main
     paths:
-      - 'Sources/**'
-      - 'Tests/**'
-      - '.github/workflows/**'
-      - 'Package.swift'
+      - "Sources/**"
+      - "Tests/**"
+      - ".github/workflows/**"
+      - "Package.swift"
   pull_request:
     paths:
-      - 'Sources/**'
-      - 'Tests/**'
-      - '.github/workflows/**'
-      - 'Package.swift'
+      - "Sources/**"
+      - "Tests/**"
+      - ".github/workflows/**"
+      - "Package.swift"
 
 jobs:
   build:
     name: Swift ${{ matrix.swift }} on ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, macos-latest]
-        swift: ["5.5"]
+        os:
+          # - "ubuntu-latest"
+          - "macos-latest"
+        swift:
+          - "5.5"
     runs-on: ${{ matrix.os }}
     steps:
       - uses: fwal/setup-swift@v1

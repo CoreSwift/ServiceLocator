@@ -1,0 +1,35 @@
+name: "ServiceLocator CI"
+
+on: 
+  push:
+    branches: 
+      - main
+    paths:
+      - 'Sources/**'
+      - 'Tests/**'
+      - '.github/workflows/**'
+      - 'Package.swift'
+  pull_request:
+    paths:
+      - 'Sources/**'
+      - 'Tests/**'
+      - '.github/workflows/**'
+      - 'Package.swift'
+
+jobs:
+  build:
+    name: Swift ${{ matrix.swift }} on ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        swift: ["5.3", "5.4", "5.5"]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: fwal/setup-swift@v1
+        with:
+          swift-version: ${{ matrix.swift }}
+      - uses: actions/checkout@
+      - name: Build
+        run: swift build
+      - name: Run tests
+        run: swift test

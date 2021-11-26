@@ -1,6 +1,11 @@
 ![CoreSwift Locks](Docs/coreswift-lockup-servicelocator.svg#gh-light-mode-only)
 ![CoreSwift Locks](Docs/coreswift-lockup-servicelocator-dark.svg#gh-dark-mode-only)
 
+![badge-languages][] ![badge-platforms][] ![badge-license][]
+![badge-ci][]
+
+---
+
 # ServiceLocator
 
 Simple service locator infrastructure. Pass around protocols backed by these locators to your view
@@ -56,3 +61,8 @@ class ProdUserServices: ChildServiceLocator<ProdAppServices>, UserServices {
   }
 }
 ```
+
+[badge-languages]: https://img.shields.io/badge/languages-Swift-orange.svg
+[badge-platforms]: https://img.shields.io/badge/platforms-macOS%20%7C%20iOS%20%7C%20watchOS%20%7C%20tvOS%20%7C%20Linux-lightgrey.svg
+[badge-license]: https://img.shields.io/github/license/CoreSwift/Locks
+[badge-ci]: https://github.com/CoreSwift/ServiceLocator/actions/workflows/ci.yml/badge.svg

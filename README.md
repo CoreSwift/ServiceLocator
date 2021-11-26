@@ -3,7 +3,8 @@
 
 # ServiceLocator
 
-Simple service locator infrastructure.
+Simple service locator infrastructure. Pass around protocols backed by these locators to your view
+controllers and coordinators to simplify dependency injection.
 
 ## Basic Example
 
@@ -27,6 +28,18 @@ class ProdAppServices: ServiceLocator, AppServices {
 ```
 
 ## Scopes
+
+Compose service locators to provide isolation amongst domains.
+
+![Scopes](Docs/Assets/Scopes.png)
+
+### Broad Rules
+
+* Parent scopes **must not** access services from child scopes
+* Child scopes **can** access services from parent scopes
+* Child scopes **must not** access services/data from sibling scopes
+
+### Example
 
 ```swift
 /// Services available in the user scope.

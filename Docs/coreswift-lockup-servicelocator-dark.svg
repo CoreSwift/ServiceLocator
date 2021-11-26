@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="715px" height="120px" viewBox="0 0 715 120" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>coreswift-lockup-servicelocator-dark</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="coreswift-lockup">
+            <g id="CoreSwift-Logo">
+                <rect id="Rectangle" fill="#FFFFFF" x="0" y="0" width="120" height="120"></rect>
+                <g id="Group" transform="translate(0.000000, 60.000000)" fill="#F05138" fill-rule="nonzero">
+                    <g id="Rectangle">
+                        <rect x="0" y="0" width="60" height="60"></rect>
+                    </g>
+                </g>
+                <g id="Group" transform="translate(60.000000, 60.000000)" fill="#F05138" fill-rule="nonzero" opacity="0.67">
+                    <g id="Rectangle">
+                        <rect x="0" y="0" width="60" height="60"></rect>
+                    </g>
+                </g>
+                <g id="Group" fill="#F05138" fill-rule="nonzero" opacity="0">
+                    <g id="Rectangle">
+                        <rect x="0" y="0" width="60" height="60"></rect>
+                    </g>
+                </g>
+                <g id="Group" transform="translate(60.000000, 0.000000)" fill="#F05138" fill-rule="nonzero" opacity="0.33">
+                    <g id="Rectangle">
+                        <rect x="0" y="0" width="60" height="60"></rect>
+                    </g>
+                </g>
+            </g>
+            <text id="CoreSwift-/-Locks" font-family="HelveticaNeue-Light, Helvetica Neue" font-size="48" font-weight="300" fill="#D5D5D5">
+                <tspan x="150" y="78">CoreSwift / ServiceLocator</tspan>
+            </text>
+        </g>
+    </g>
+</svg>

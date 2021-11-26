@@ -1,5 +1,5 @@
-![CoreSwift Locks](Docs/coreswift-lockup-servicelocator.png#gh-light-mode-only)
-![CoreSwift Locks](Docs/coreswift-lockup-servicelocator-dark.png#gh-dark-mode-only)
+![CoreSwift Locks](Docs/coreswift-lockup-servicelocator.svg#gh-light-mode-only)
+![CoreSwift Locks](Docs/coreswift-lockup-servicelocator-dark.svg#gh-dark-mode-only)
 
 # ServiceLocator
 

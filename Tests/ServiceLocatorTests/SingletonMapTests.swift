@@ -19,15 +19,20 @@ final class SingletonMapTests: XCTestCase {
   func testItBlocksOtherThreads() throws {
     let map = SingletonMap<String>()
 
-    let factoryWaiter = NSConditionLock(condition: 0)
+    var factoryReady = false
+    let factoryWaiter = NSCondition()
+
     let factoryStartedExpectation = expectation(description: "Factory started")
     let factoryFinishedExpectation = expectation(description: "Factory finished")
     let factory: () -> TestItem = {
-      print("Starting task 1")
       factoryStartedExpectation.fulfill()
 
-      factoryWaiter.lock(whenCondition: 1)
-      defer { factoryWaiter.unlock() }
+      // Wait until the factory is ready.
+      factoryWaiter.lock()
+      while !factoryReady {
+        factoryWaiter.wait()
+      }
+      factoryWaiter.unlock()
 
       factoryFinishedExpectation.fulfill()
       return TestItem()
@@ -63,8 +68,12 @@ final class SingletonMapTests: XCTestCase {
     // expectations as non-inverted so we don't fail the test once we unblock.
     taskOneFinishedExpectation.isInverted = false
     taskTwoFinishedExpectation.isInverted = false
+
+    // Signal the factory that it can now proceed.
     factoryWaiter.lock()
-    factoryWaiter.unlock(withCondition: 1)
+    factoryReady = true
+    factoryWaiter.broadcast()
+    factoryWaiter.unlock()
 
     wait(
       for: [factoryFinishedExpectation, taskOneFinishedExpectation, taskTwoFinishedExpectation],

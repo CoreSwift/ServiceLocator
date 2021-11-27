@@ -51,12 +51,7 @@ jobs:
       - name: Run tests
         run: swift test --enable-code-coverage
       - name: Convert Coverage
-        run: |
-          llvm-cov export \
-            -format="lcov" \
-            .build/debug/ServiceLocatorPackageTests.xctest/Contents/MacOS/ServiceLocatorPackageTests \
-            -instr-profile .build/debug/codecov/default.profdata \
-            > info.lcov
+        run: llvm-cov export -format="lcov" build/debug/ServiceLocatorPackageTests.xctest/Contents/MacOS/ServiceLocatorPackageTests -instr-profile .build/debug/codecov/default.profdata > info.lcov
         if: matrix.os == "macos-latest" && matrix.swift-version == "5.5"
       - name: Post Coverage
         uses: codecov/codecov-action@v1

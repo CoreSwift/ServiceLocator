@@ -2,7 +2,7 @@
 ![CoreSwift Locks](Docs/coreswift-lockup-servicelocator-dark.svg#gh-dark-mode-only)
 
 ![badge-languages][] ![badge-platforms][] ![badge-license][]
-![badge-ci][]
+![badge-ci][] [![badge-codecov]][codecov-url]
 
 ---
 
@@ -66,3 +66,5 @@ class ProdUserServices: ChildServiceLocator<ProdAppServices>, UserServices {
 [badge-platforms]: https://img.shields.io/badge/platforms-macOS%20%7C%20iOS%20%7C%20watchOS%20%7C%20tvOS%20%7C%20Linux-lightgrey.svg
 [badge-license]: https://img.shields.io/github/license/CoreSwift/Locks
 [badge-ci]: https://github.com/CoreSwift/ServiceLocator/actions/workflows/ci.yml/badge.svg
+[badge-codecov]: https://codecov.io/gh/CoreSwift/ServiceLocator/branch/main/graph/badge.svg?token=V29B0Q2IS5
+[codecov-url]: https://codecov.io/gh/CoreSwift/ServiceLocator

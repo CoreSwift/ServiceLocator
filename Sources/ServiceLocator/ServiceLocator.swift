@@ -24,6 +24,11 @@ open class ServiceLocator {
   /// Backing storage for any singletons stored in this locator.
   private let singletons = SingletonMap<String>()
 
+  // MARK: Initializers
+
+  // Creates a new `ServiceLocator`.
+  public init() {}
+
   // MARK: Subclass Hooks
 
   /// Subclass hook for starting any actions (such as long-running "background" services) upon
@@ -84,7 +89,7 @@ open class ChildServiceLocator<Parent: ServiceLocator>: ServiceLocator {
   public let parent: Parent
 
   /// Creates a new `ChildServiceLocator` with the given parent locator.
-  init(parent: Parent) {
+  public init(parent: Parent) {
     self.parent = parent
   }
 }

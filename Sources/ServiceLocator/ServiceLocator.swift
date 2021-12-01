@@ -28,12 +28,12 @@ open class ServiceLocator {
 
   /// Subclass hook for starting any actions (such as long-running "background" services) upon
   /// creation/startup of the locator.
-  public func activate() {
+  open func activate() {
   }
 
   /// Subclass hook for stopping any actions (such as long-running "background" services) upon
   /// teardown of the locator (as in the case of a scope ending - e.g. a user logging out).
-  public func deactivate() {
+  open func deactivate() {
   }
 
   // MARK: Singletons

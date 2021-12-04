@@ -25,6 +25,7 @@ private class ChildLocator: ChildServiceLocator<RootLocator> {
   }
 }
 
+@MainActor
 final class ServiceLocatorTests: XCTestCase {
   func testSingletonReturnsSameValue() throws {
     let locator = RootLocator()

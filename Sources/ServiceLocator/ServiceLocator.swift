@@ -27,18 +27,21 @@ open class ServiceLocator {
   // MARK: Initializers
 
   // Creates a new `ServiceLocator`.
+  @MainActor
   public init() {}
 
   // MARK: Subclass Hooks
 
   /// Subclass hook for starting any actions (such as long-running "background" services) upon
   /// creation/startup of the locator.
-  open func activate() {
+  @MainActor
+  open func activate() async {
   }
 
   /// Subclass hook for stopping any actions (such as long-running "background" services) upon
   /// teardown of the locator (as in the case of a scope ending - e.g. a user logging out).
-  open func deactivate() {
+  @MainActor
+  open func deactivate() async {
   }
 
   // MARK: Singletons
@@ -89,7 +92,10 @@ open class ChildServiceLocator<Parent: ServiceLocator>: ServiceLocator {
   public let parent: Parent
 
   /// Creates a new `ChildServiceLocator` with the given parent locator.
+  @MainActor
   public init(parent: Parent) {
     self.parent = parent
+
+    super.init()
   }
 }
